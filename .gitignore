@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 config.json
 .pytest_cache/
+node.zip
