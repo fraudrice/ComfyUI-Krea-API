@@ -1,0 +1,23 @@
+[project]
+name = "comfyui-krea-api"
+description = "ComfyUI nodes for the Krea API: text-to-image, editing, masked edits, bounding-box region edits and enhancers across every Krea image model."
+version = "0.1.0"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/fraudrice/ComfyUI-Krea-API"
+
+[tool.comfy]
+PublisherId = "friedrice"
+DisplayName = "ComfyUI-Krea-API"
+Icon = ""
+includes = []
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint.per-file-ignores]
+# ComfyUI loads the pack by its folder name.
+"*" = ["N999"]

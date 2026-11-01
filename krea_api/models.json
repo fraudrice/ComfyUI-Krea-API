@@ -1,0 +1,3132 @@
+{
+ "source": "https://api.krea.ai/openapi.json",
+ "generated": "2026-11-01",
+ "models": [
+  {
+   "id": "krea/enhance",
+   "kind": "enhance",
+   "path": "/generate/enhance/krea/enhance",
+   "name": "Krea Enhance",
+   "description": "Cheap creative enhancer for adding new details. Max 8K.",
+   "deprecated": false,
+   "required": [
+    "image_url"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string",
+     "default": "",
+     "description": "Text prompt describing the desired result."
+    },
+    "image_url": {
+     "type": "string",
+     "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+     "format": "uri"
+    },
+    "image_scaling_factor": {
+     "type": "number",
+     "default": 2,
+     "minimum": 0.1,
+     "description": "Factor to scale the image resolution by (e.g. 2 means 2x; use 1 to skip upscaling)."
+    },
+    "rescale_color": {
+     "type": "boolean",
+     "default": false,
+     "description": "Match the original image color palette."
+    },
+    "seed": {
+     "type": "number",
+     "description": "Seed for reproducible results."
+    },
+    "ai_strength": {
+     "type": "number",
+     "default": 0.4,
+     "minimum": 0.1,
+     "maximum": 1,
+     "description": "AI strength \u2014 how much new detail the model generates. Higher values enhance more aggressively."
+    },
+    "clarity_strength": {
+     "type": "number",
+     "default": 4,
+     "minimum": 1,
+     "maximum": 12,
+     "description": "Clarity \u2014 how strongly the result follows the prompt."
+    },
+    "resemblance_strength": {
+     "type": "number",
+     "default": 1,
+     "minimum": 0,
+     "maximum": 2.5,
+     "description": "Resemblance \u2014 how faithfully the result preserves the original image structure."
+    },
+    "sharpness": {
+     "type": "number",
+     "default": 0.5,
+     "minimum": 0.1,
+     "maximum": 1.5,
+     "description": "Sharpness applied to fine detail. Does not affect generation of new detail."
+    }
+   }
+  },
+  {
+   "id": "krea/legacy-enhance",
+   "kind": "enhance",
+   "path": "/generate/enhance/krea/legacy-enhance",
+   "name": "Krea Enhance Legacy",
+   "description": "Krea's generative legacy enhancer. Max 4K.",
+   "deprecated": false,
+   "required": [
+    "image_url"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string",
+     "default": "",
+     "description": "Text prompt describing the desired result."
+    },
+    "image_url": {
+     "type": "string",
+     "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+     "format": "uri"
+    },
+    "image_scaling_factor": {
+     "type": "number",
+     "default": 2,
+     "minimum": 0.1,
+     "description": "Factor to scale the image resolution by (e.g. 2 means 2x; use 1 to skip upscaling)."
+    },
+    "rescale_color": {
+     "type": "boolean",
+     "default": false,
+     "description": "Match the original image color palette."
+    },
+    "upscaling_activated": {
+     "type": "boolean",
+     "default": true,
+     "description": "Whether to upscale the image."
+    },
+    "ai_strength": {
+     "type": "number",
+     "default": 0.6,
+     "minimum": 0.1,
+     "maximum": 1,
+     "description": "AI strength \u2014 how much new detail the model generates. Higher values enhance more aggressively."
+    },
+    "clarity_strength": {
+     "type": "number",
+     "default": 2.5,
+     "minimum": 1,
+     "maximum": 12,
+     "description": "Clarity \u2014 how strongly the result follows the prompt."
+    },
+    "resemblance_strength": {
+     "type": "number",
+     "default": 1,
+     "minimum": 0,
+     "maximum": 2.5,
+     "description": "Resemblance \u2014 how faithfully the result preserves the original image structure."
+    },
+    "scene_transfer": {
+     "type": "boolean",
+     "default": false,
+     "description": "Scene Transfer \u2014 relight the image using a reference scene."
+    },
+    "scene_image_url": {
+     "type": [
+      "string",
+      "string"
+     ],
+     "default": "",
+     "description": "Reference scene image URL. Required when scene_transfer is true."
+    },
+    "scene_prompt": {
+     "type": "string",
+     "default": "",
+     "description": "Prompt describing the target scene and lighting."
+    },
+    "scene_strength": {
+     "type": "number",
+     "default": 0.85,
+     "minimum": 0.5,
+     "maximum": 1,
+     "description": "Scene Transfer strength."
+    },
+    "switch_background": {
+     "type": "boolean",
+     "default": false,
+     "description": "Replace the background with the reference scene."
+    }
+   }
+  },
+  {
+   "id": "magnific/creative-enhance",
+   "kind": "enhance",
+   "path": "/generate/enhance/magnific/creative-enhance",
+   "name": "Magnific Creative",
+   "description": "Best creative enhancer. Max 10K.",
+   "deprecated": false,
+   "required": [
+    "height",
+    "image_url",
+    "width"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string",
+     "default": ""
+    },
+    "width": {
+     "type": "number",
+     "minimum": 1,
+     "maximum": 10000
+    },
+    "height": {
+     "type": "number",
+     "minimum": 1,
+     "maximum": 10000
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "image_url": {
+     "type": "string",
+     "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+     "format": "uri"
+    },
+    "output_format": {
+     "type": "string",
+     "enum": [
+      "png",
+      "jpg",
+      "webp"
+     ],
+     "default": "png"
+    },
+    "optimized_for": {
+     "type": "string",
+     "enum": [
+      "standard",
+      "soft_portraits",
+      "hard_portraits",
+      "art_n_illustration",
+      "videogame_assets",
+      "nature_n_landscapes",
+      "films_n_photography",
+      "3d_renders",
+      "science_fiction_n_horror"
+     ],
+     "default": "standard"
+    },
+    "creativity": {
+     "type": "integer",
+     "default": 0,
+     "minimum": -10,
+     "maximum": 10
+    },
+    "hdr": {
+     "type": "integer",
+     "default": 0,
+     "minimum": -10,
+     "maximum": 10
+    },
+    "resemblance": {
+     "type": "integer",
+     "default": 0,
+     "minimum": -10,
+     "maximum": 10
+    },
+    "fractality": {
+     "type": "integer",
+     "default": 0,
+     "minimum": -10,
+     "maximum": 10
+    },
+    "engine": {
+     "type": "string",
+     "enum": [
+      "automatic",
+      "magnific_illusio",
+      "magnific_sharpy",
+      "magnific_sparkle"
+     ],
+     "default": "automatic"
+    },
+    "upscaling_activated": {
+     "type": "boolean",
+     "default": true
+    },
+    "image_scaling_factor": {
+     "type": "number",
+     "default": 2,
+     "minimum": 2,
+     "maximum": 16
+    }
+   }
+  },
+  {
+   "id": "magnific/precise-enhance",
+   "kind": "enhance",
+   "path": "/generate/enhance/magnific/precise-enhance",
+   "name": "Magnific Precise",
+   "description": "More faithful variant of Magnific. Max 10K.",
+   "deprecated": false,
+   "required": [
+    "height",
+    "image_url",
+    "width"
+   ],
+   "fields": {
+    "width": {
+     "type": "number",
+     "minimum": 1,
+     "maximum": 10000
+    },
+    "height": {
+     "type": "number",
+     "minimum": 1,
+     "maximum": 10000
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "image_url": {
+     "type": "string",
+     "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+     "format": "uri"
+    },
+    "output_format": {
+     "type": "string",
+     "enum": [
+      "png",
+      "jpg",
+      "webp"
+     ],
+     "default": "png"
+    },
+    "sharpen": {
+     "type": "integer",
+     "default": 7,
+     "minimum": 0,
+     "maximum": 100
+    },
+    "smart_grain": {
+     "type": "integer",
+     "default": 7,
+     "minimum": 0,
+     "maximum": 100
+    },
+    "ultra_detail": {
+     "type": "integer",
+     "default": 30,
+     "minimum": 0,
+     "maximum": 100
+    },
+    "flavor": {
+     "type": "string",
+     "enum": [
+      "sublime",
+      "photo",
+      "photo_denoiser"
+     ]
+    },
+    "upscaling_activated": {
+     "type": "boolean",
+     "default": true
+    },
+    "image_scaling_factor": {
+     "type": "number",
+     "default": 2,
+     "minimum": 2,
+     "maximum": 16
+    }
+   }
+  },
+  {
+   "id": "topaz/bloom-2-enhance",
+   "kind": "enhance",
+   "path": "/generate/enhance/topaz/bloom-2-enhance",
+   "name": "Topaz Bloom 2",
+   "description": "Creative upscaler for GenAI images, reimagined. Max 10K.",
+   "deprecated": false,
+   "required": [
+    "height",
+    "image_url",
+    "width"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string",
+     "default": ""
+    },
+    "width": {
+     "type": "number",
+     "minimum": 1,
+     "maximum": 10000
+    },
+    "height": {
+     "type": "number",
+     "minimum": 1,
+     "maximum": 10000
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "image_url": {
+     "type": "string",
+     "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+     "format": "uri"
+    },
+    "output_format": {
+     "type": "string",
+     "enum": [
+      "png",
+      "jpg",
+      "webp"
+     ],
+     "default": "jpg"
+    },
+    "crop_to_fill": {
+     "type": "boolean",
+     "default": false
+    },
+    "creativity": {
+     "type": "integer",
+     "default": 3,
+     "minimum": 1,
+     "maximum": 9
+    },
+    "autoprompt": {
+     "type": "boolean",
+     "default": true
+    },
+    "face_preservation": {
+     "type": "boolean",
+     "default": false
+    },
+    "color_preservation": {
+     "type": "boolean",
+     "default": true
+    },
+    "grain": {
+     "type": "boolean",
+     "default": false
+    },
+    "grain_model": {
+     "type": "string",
+     "enum": [
+      "silver",
+      "gaussian",
+      "grey"
+     ],
+     "default": "silver"
+    },
+    "grain_density": {
+     "type": "number",
+     "default": 0.5,
+     "minimum": 0,
+     "maximum": 1
+    },
+    "grain_strength": {
+     "type": "number",
+     "default": 0.5,
+     "minimum": 0,
+     "maximum": 1
+    },
+    "grain_size": {
+     "type": "number",
+     "default": 1,
+     "minimum": 1,
+     "maximum": 5
+    },
+    "reference_uri": {
+     "type": "string",
+     "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+     "format": "uri"
+    },
+    "upscaling_activated": {
+     "type": "boolean",
+     "default": false
+    },
+    "image_scaling_factor": {
+     "type": "number",
+     "default": 1,
+     "minimum": 1,
+     "maximum": 32
+    }
+   }
+  },
+  {
+   "id": "topaz/bloom-enhance",
+   "kind": "enhance",
+   "path": "/generate/enhance/topaz/bloom-enhance",
+   "name": "Topaz Bloom",
+   "description": "Creative upscaler that adds new details. Max 10K.",
+   "deprecated": false,
+   "required": [
+    "height",
+    "image_url",
+    "width"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string",
+     "default": ""
+    },
+    "width": {
+     "type": "number",
+     "minimum": 1,
+     "maximum": 10000
+    },
+    "height": {
+     "type": "number",
+     "minimum": 1,
+     "maximum": 10000
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "image_url": {
+     "type": "string",
+     "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+     "format": "uri"
+    },
+    "output_format": {
+     "type": "string",
+     "enum": [
+      "png",
+      "jpg",
+      "webp"
+     ],
+     "default": "jpg"
+    },
+    "crop_to_fill": {
+     "type": "boolean",
+     "default": false
+    },
+    "creativity": {
+     "type": "integer",
+     "default": 3,
+     "minimum": 1,
+     "maximum": 9
+    },
+    "face_preservation": {
+     "type": "boolean",
+     "default": false
+    },
+    "color_preservation": {
+     "type": "boolean",
+     "default": false
+    },
+    "upscaling_activated": {
+     "type": "boolean",
+     "default": false
+    },
+    "image_scaling_factor": {
+     "type": "number",
+     "default": 1,
+     "minimum": 1,
+     "maximum": 32
+    }
+   }
+  },
+  {
+   "id": "topaz/generative-enhance",
+   "kind": "enhance",
+   "path": "/generate/enhance/topaz/generative-enhance",
+   "name": "Topaz Image Upscale",
+   "description": "Most powerful creative enhancer. Max 16K.",
+   "deprecated": false,
+   "required": [
+    "height",
+    "image_url",
+    "width"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string",
+     "default": ""
+    },
+    "width": {
+     "type": "number",
+     "minimum": 1,
+     "maximum": 32000
+    },
+    "height": {
+     "type": "number",
+     "minimum": 1,
+     "maximum": 32000
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "image_url": {
+     "type": "string",
+     "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+     "format": "uri"
+    },
+    "model": {
+     "type": "string",
+     "enum": [
+      "Redefine",
+      "Recovery",
+      "Recovery V2",
+      "Reimagine",
+      "Wonder 3",
+      "Standard MAX",
+      "Recover 3",
+      "Detail"
+     ],
+     "default": "Redefine"
+    },
+    "output_format": {
+     "type": "string",
+     "enum": [
+      "png",
+      "jpg",
+      "webp"
+     ],
+     "default": "jpg"
+    },
+    "subject_detection": {
+     "type": "string",
+     "enum": [
+      "All",
+      "Foreground",
+      "Background"
+     ],
+     "default": "All"
+    },
+    "face_enhancement": {
+     "type": "boolean",
+     "default": false
+    },
+    "face_enhancement_creativity": {
+     "type": "number",
+     "default": 0.5,
+     "minimum": 0,
+     "maximum": 1
+    },
+    "face_enhancement_strength": {
+     "type": "number",
+     "default": 0.5,
+     "minimum": 0,
+     "maximum": 1
+    },
+    "crop_to_fill": {
+     "type": "boolean",
+     "default": false
+    },
+    "upscaling_activated": {
+     "type": "boolean",
+     "default": false
+    },
+    "image_scaling_factor": {
+     "type": "number",
+     "default": 1,
+     "minimum": 1,
+     "maximum": 32
+    },
+    "creativity": {
+     "type": "integer",
+     "default": 3,
+     "minimum": 1,
+     "maximum": 6
+    },
+    "texture": {
+     "type": "integer",
+     "default": 3,
+     "minimum": 1,
+     "maximum": 5
+    },
+    "sharpen": {
+     "type": "number",
+     "default": 0.5,
+     "minimum": 0,
+     "maximum": 1
+    },
+    "denoise": {
+     "type": "number",
+     "default": 0.5,
+     "minimum": 0,
+     "maximum": 1
+    },
+    "detail": {
+     "type": "number",
+     "default": 0.5,
+     "minimum": 0,
+     "maximum": 1
+    }
+   }
+  },
+  {
+   "id": "topaz/standard-enhance",
+   "kind": "enhance",
+   "path": "/generate/enhance/topaz/standard-enhance",
+   "name": "Topaz Standard",
+   "description": "Powerful faithful upscaler. Up to 22K resolution. Best for photos.",
+   "deprecated": false,
+   "required": [
+    "height",
+    "image_url",
+    "model",
+    "width"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string",
+     "default": ""
+    },
+    "width": {
+     "type": "number",
+     "minimum": 1,
+     "maximum": 32000
+    },
+    "height": {
+     "type": "number",
+     "minimum": 1,
+     "maximum": 32000
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "image_url": {
+     "type": "string",
+     "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+     "format": "uri"
+    },
+    "model": {
+     "type": "string",
+     "enum": [
+      "Standard V2",
+      "Low Resolution V2",
+      "CGI",
+      "High Fidelity V2",
+      "Upscale High Fidelity V3",
+      "Text Refine"
+     ]
+    },
+    "output_format": {
+     "type": "string",
+     "enum": [
+      "png",
+      "jpg",
+      "webp"
+     ],
+     "default": "jpg"
+    },
+    "subject_detection": {
+     "type": "string",
+     "enum": [
+      "All",
+      "Foreground",
+      "Background"
+     ],
+     "default": "All"
+    },
+    "face_enhancement": {
+     "type": "boolean",
+     "default": false
+    },
+    "face_enhancement_creativity": {
+     "type": "number",
+     "default": 0.5,
+     "minimum": 0,
+     "maximum": 1
+    },
+    "face_enhancement_strength": {
+     "type": "number",
+     "default": 0.5,
+     "minimum": 0,
+     "maximum": 1
+    },
+    "crop_to_fill": {
+     "type": "boolean",
+     "default": false
+    },
+    "upscaling_activated": {
+     "type": "boolean",
+     "default": false
+    },
+    "image_scaling_factor": {
+     "type": "number",
+     "default": 1,
+     "minimum": 1,
+     "maximum": 32
+    },
+    "sharpen": {
+     "type": "number",
+     "default": 0.5,
+     "minimum": 0,
+     "maximum": 1
+    },
+    "denoise": {
+     "type": "number",
+     "default": 0.5,
+     "minimum": 0,
+     "maximum": 1
+    },
+    "fix_compression": {
+     "type": "number",
+     "default": 0.5,
+     "minimum": 0,
+     "maximum": 1
+    },
+    "strength": {
+     "type": "number",
+     "default": 0.5,
+     "minimum": 0.01,
+     "maximum": 1
+    }
+   }
+  },
+  {
+   "id": "alibaba/qwen-image-2.1",
+   "kind": "image",
+   "path": "/generate/image/alibaba/qwen-image-2.1",
+   "name": "Qwen Image 2.1",
+   "description": "Transparent assets and identity-safe edits.",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "width": {
+     "type": "integer",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 2048
+    },
+    "height": {
+     "type": "integer",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 2048
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "style_images": {
+     "type": "array",
+     "maxItems": 3,
+     "description": "Image prompts to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "strength"
+      ]
+     }
+    },
+    "background": {
+     "type": "string",
+     "enum": [
+      "transparent",
+      "opaque",
+      "auto"
+     ],
+     "description": "Background of the generated image. `transparent` returns a cutout."
+    }
+   }
+  },
+  {
+   "id": "alibaba/qwen-image-3",
+   "kind": "image",
+   "path": "/generate/image/alibaba/qwen-image-3",
+   "name": "Qwen Image 3",
+   "description": "Dense layouts with small, legible text.",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "width": {
+     "type": "integer",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 2048
+    },
+    "height": {
+     "type": "integer",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 2048
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "style_images": {
+     "type": "array",
+     "maxItems": 3,
+     "description": "Image prompts to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "strength"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": "bfl/flux-1-dev",
+   "kind": "image",
+   "path": "/generate/image/bfl/flux-1-dev",
+   "name": "Flux.1 Dev",
+   "description": "Fast model. Best for LoRAs.",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "seed": {
+     "type": "number",
+     "default": 4185504359
+    },
+    "steps": {
+     "type": "integer",
+     "default": 25,
+     "minimum": 1,
+     "maximum": 100
+    },
+    "width": {
+     "type": "number",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 2368
+    },
+    "height": {
+     "type": "number",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 2368
+    },
+    "image_url": {
+     "nullable": true,
+     "type": "string"
+    },
+    "styles": {
+     "type": "array",
+     "description": "Styles (typically LoRAs) to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "id": {
+        "type": "string"
+       },
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       }
+      },
+      "required": [
+       "id",
+       "strength"
+      ]
+     }
+    },
+    "strength": {
+     "type": "number",
+     "default": 1,
+     "minimum": 0,
+     "maximum": 1,
+     "description": "Denoising strength when an input image is provided. 0 keeps the input image, 1 fully replaces it."
+    },
+    "guidance_scale": {
+     "type": "number",
+     "default": 3,
+     "minimum": 0,
+     "maximum": 24,
+     "description": "Classifier-free guidance scale. Higher values follow the prompt more strictly. Default 3.0."
+    },
+    "style_images": {
+     "type": "array",
+     "description": "Image prompts to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "strength"
+      ]
+     }
+    },
+    "image_style_references": {
+     "type": "array",
+     "description": "Style references to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "strength"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": "bfl/flux-1-kontext-dev",
+   "kind": "image",
+   "path": "/generate/image/bfl/flux-1-kontext-dev",
+   "name": "Flux Kontext Dev",
+   "description": "Frontier model designed for image editing, optimized for Krea",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "steps": {
+     "type": "integer",
+     "default": 28,
+     "minimum": 1,
+     "maximum": 100
+    },
+    "width": {
+     "type": "number",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 8192
+    },
+    "height": {
+     "type": "number",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 8192
+    },
+    "image_url": {
+     "nullable": true,
+     "type": "string"
+    },
+    "guidance_scale": {
+     "type": "number",
+     "default": 3,
+     "minimum": 0,
+     "maximum": 24,
+     "description": "Classifier-free guidance scale. Higher values follow the prompt more strictly. Default 3.0."
+    },
+    "style_images": {
+     "type": "array",
+     "maxItems": 1,
+     "description": "Image prompts to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "strength"
+      ]
+     }
+    },
+    "strength": {
+     "type": "number",
+     "default": 1,
+     "minimum": 0,
+     "maximum": 1,
+     "description": "Denoising strength when an input image is provided. 0 keeps the input image, 1 fully replaces it."
+    }
+   }
+  },
+  {
+   "id": "bfl/flux-1.1-pro",
+   "kind": "image",
+   "path": "/generate/image/bfl/flux-1.1-pro",
+   "name": "Flux 1.1 Pro",
+   "description": "Advanced yet efficent model from BFL.",
+   "deprecated": false,
+   "required": [
+    "height",
+    "prompt",
+    "width"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "width": {
+     "type": "number",
+     "minimum": 256,
+     "maximum": 1440
+    },
+    "height": {
+     "type": "number",
+     "minimum": 256,
+     "maximum": 1440
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    }
+   }
+  },
+  {
+   "id": "bfl/flux-1.1-pro-ultra",
+   "kind": "image",
+   "path": "/generate/image/bfl/flux-1.1-pro-ultra",
+   "name": "Flux 1.1 Pro Ultra",
+   "description": "BFL's highest quality text to image model.",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "width": {
+     "type": "number",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 8192
+    },
+    "height": {
+     "type": "number",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 8192
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "raw": {
+     "type": "boolean",
+     "default": true
+    }
+   }
+  },
+  {
+   "id": "bytedance/seededit",
+   "kind": "image",
+   "path": "/generate/image/bytedance/seededit",
+   "name": "SeedEdit",
+   "description": "New frontier model designed for image editing",
+   "deprecated": false,
+   "required": [
+    "image_url",
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "image_url": {
+     "type": "string",
+     "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+     "format": "uri"
+    }
+   }
+  },
+  {
+   "id": "bytedance/seedream-4",
+   "kind": "image",
+   "path": "/generate/image/bytedance/seedream-4",
+   "name": "Seedream 4",
+   "description": "New high quality model for photorealism and text rendering",
+   "deprecated": false,
+   "required": [
+    "height",
+    "prompt",
+    "width"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "width": {
+     "type": "number",
+     "maximum": 4096
+    },
+    "height": {
+     "type": "number",
+     "maximum": 4096
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "style_images": {
+     "type": "array",
+     "description": "Image prompts to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "strength"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": "bytedance/seedream-5-lite",
+   "kind": "image",
+   "path": "/generate/image/bytedance/seedream-5-lite",
+   "name": "Seedream 5 Lite",
+   "description": "Medium quality model with reasoning and web search.",
+   "deprecated": false,
+   "required": [
+    "height",
+    "prompt",
+    "width"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "width": {
+     "type": "number",
+     "maximum": 4096
+    },
+    "height": {
+     "type": "number",
+     "maximum": 4096
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "style_images": {
+     "type": "array",
+     "maxItems": 14,
+     "description": "Image prompts to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "strength"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": "bytedance/seedream-5-pro",
+   "kind": "image",
+   "path": "/generate/image/bytedance/seedream-5-pro",
+   "name": "Seedream 5 Pro",
+   "description": "Highest quality model with precise editing control.",
+   "deprecated": false,
+   "required": [
+    "height",
+    "prompt",
+    "width"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "width": {
+     "type": "number",
+     "maximum": 4096
+    },
+    "height": {
+     "type": "number",
+     "maximum": 4096
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "style_images": {
+     "type": "array",
+     "maxItems": 10,
+     "description": "Image prompts to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "strength"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": "google/nano-banana",
+   "kind": "image",
+   "path": "/generate/image/google/nano-banana",
+   "name": "Nano Banana",
+   "description": "Most versatile intelligent model.",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "width": {
+     "type": "number",
+     "description": "Width of the generated image."
+    },
+    "height": {
+     "type": "number",
+     "description": "Height of the generated image."
+    },
+    "image_urls": {
+     "type": "array",
+     "description": "Image prompts to use for the generation.",
+     "items": {
+      "type": "string",
+      "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+      "format": "uri"
+     }
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "21:9",
+      "1:1",
+      "4:3",
+      "3:2",
+      "2:3",
+      "5:4",
+      "4:5",
+      "3:4",
+      "16:9",
+      "9:16"
+     ]
+    }
+   }
+  },
+  {
+   "id": "google/nano-banana-2",
+   "kind": "image",
+   "path": "/generate/image/google/nano-banana-2",
+   "name": "Nano Banana 2",
+   "description": "Cheaper quality version of Nano Banana.",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "width": {
+     "type": "number",
+     "description": "Width of the generated image."
+    },
+    "height": {
+     "type": "number",
+     "description": "Height of the generated image."
+    },
+    "image_urls": {
+     "type": "array",
+     "description": "Image prompts to use for the generation.",
+     "items": {
+      "type": "string",
+      "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+      "format": "uri"
+     }
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "4:1",
+      "21:9",
+      "1:1",
+      "4:3",
+      "3:2",
+      "2:3",
+      "5:4",
+      "4:5",
+      "3:4",
+      "16:9",
+      "9:16",
+      "1:4",
+      "1:8"
+     ]
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "1K",
+      "2K",
+      "4K"
+     ],
+     "default": "1K"
+    }
+   }
+  },
+  {
+   "id": "google/nano-banana-2.1",
+   "kind": "image",
+   "path": "/generate/image/google/nano-banana-2.1",
+   "name": "Nano Banana 2.1",
+   "description": "Google's latest image model. Pro-level quality at Flash speed.",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "width": {
+     "type": "number",
+     "description": "Width of the generated image."
+    },
+    "height": {
+     "type": "number",
+     "description": "Height of the generated image."
+    },
+    "image_urls": {
+     "type": "array",
+     "description": "Image prompts to use for the generation.",
+     "items": {
+      "type": "string",
+      "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+      "format": "uri"
+     }
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "4:1",
+      "21:9",
+      "1:1",
+      "4:3",
+      "3:2",
+      "2:3",
+      "5:4",
+      "4:5",
+      "3:4",
+      "16:9",
+      "9:16",
+      "1:4",
+      "1:8"
+     ]
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "1K",
+      "2K",
+      "4K"
+     ],
+     "default": "1K"
+    },
+    "thinking_level": {
+     "type": "string",
+     "enum": [
+      "minimal",
+      "medium",
+      "high"
+     ],
+     "default": "medium"
+    }
+   }
+  },
+  {
+   "id": "google/nano-banana-flash-lite",
+   "kind": "image",
+   "path": "/generate/image/google/nano-banana-flash-lite",
+   "name": "Nano Banana 2 Lite",
+   "description": "Fast Google image model.",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "width": {
+     "type": "number",
+     "description": "Width of the generated image."
+    },
+    "height": {
+     "type": "number",
+     "description": "Height of the generated image."
+    },
+    "image_urls": {
+     "type": "array",
+     "maxItems": 14,
+     "description": "Image prompts to use for the generation.",
+     "items": {
+      "type": "string",
+      "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+      "format": "uri"
+     }
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "21:9",
+      "1:1",
+      "4:3",
+      "3:2",
+      "2:3",
+      "5:4",
+      "4:5",
+      "3:4",
+      "16:9",
+      "9:16"
+     ]
+    }
+   }
+  },
+  {
+   "id": "google/nano-banana-pro",
+   "kind": "image",
+   "path": "/generate/image/google/nano-banana-pro",
+   "name": "Nano Banana Pro",
+   "description": "World's most intelligent model.",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "width": {
+     "type": "number",
+     "description": "Width of the generated image."
+    },
+    "height": {
+     "type": "number",
+     "description": "Height of the generated image."
+    },
+    "image_urls": {
+     "type": "array",
+     "description": "Image prompts to use for the generation.",
+     "items": {
+      "type": "string",
+      "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+      "format": "uri"
+     }
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "21:9",
+      "1:1",
+      "4:3",
+      "3:2",
+      "2:3",
+      "5:4",
+      "4:5",
+      "3:4",
+      "16:9",
+      "9:16"
+     ]
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "1K",
+      "2K",
+      "4K"
+     ],
+     "default": "1K"
+    }
+   }
+  },
+  {
+   "id": "ideogram/ideogram-3",
+   "kind": "image",
+   "path": "/generate/image/ideogram/ideogram-3",
+   "name": "Ideogram 3.0",
+   "description": "Highly aesthetic, general-purpose model.",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "width": {
+     "type": "number",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 8192
+    },
+    "height": {
+     "type": "number",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 8192
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "character_reference_images": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+      "format": "uri"
+     }
+    },
+    "style_images": {
+     "type": "array",
+     "description": "Image prompts to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "strength"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": "ideogram/ideogram-4.5",
+   "kind": "image",
+   "path": "/generate/image/ideogram/ideogram-4.5",
+   "name": "Ideogram 4.5",
+   "description": "Generate images or edit source images with prompts and up to five image references. Very low quality requires an image. Set preserve_source_size to keep the first source image dimensions; aspect_ratio and resolution are then ignored.",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "seed": {
+     "type": "integer",
+     "minimum": 0,
+     "maximum": 2147483647
+    },
+    "quality": {
+     "type": "string",
+     "enum": [
+      "very_low",
+      "low",
+      "medium",
+      "high"
+     ],
+     "default": "high"
+    },
+    "preserve_source_size": {
+     "type": "boolean",
+     "default": false
+    },
+    "skip_prompt_expansion": {
+     "type": "boolean",
+     "default": false
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "1:1",
+      "4:3",
+      "3:2",
+      "16:9",
+      "2.4:1",
+      "4:5",
+      "2:3",
+      "9:16"
+     ],
+     "default": "1:1",
+     "description": "Aspect ratio. One of: 1:1, 4:3, 3:2, 16:9, 2.4:1, 4:5, 2:3, 9:16."
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "2K"
+     ],
+     "default": "2K",
+     "description": "Resolution scale. One of: 2K."
+    },
+    "image_urls": {
+     "type": "array",
+     "maxItems": 5,
+     "description": "Up to five source or reference images for prompt-based editing. Omit for text-to-image generation.",
+     "items": {
+      "type": "string",
+      "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+      "format": "uri"
+     }
+    }
+   }
+  },
+  {
+   "id": "ideogram/ideogram-4.5-precise",
+   "kind": "image",
+   "path": "/generate/image/ideogram/ideogram-4.5-precise",
+   "name": "Ideogram 4.5 Precise",
+   "description": "Precisely edit an image while preserving its resolution and surrounding details. Supports optional masks and reference images. Use generate_image with this model for both masked and unmasked edits.",
+   "deprecated": false,
+   "required": [
+    "image_url",
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "seed": {
+     "type": "integer",
+     "minimum": 0,
+     "maximum": 2147483647
+    },
+    "quality": {
+     "type": "string",
+     "enum": [
+      "very_low",
+      "low",
+      "medium",
+      "high"
+     ],
+     "default": "high"
+    },
+    "image_url": {
+     "type": "string",
+     "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+     "format": "uri"
+    },
+    "mask_url": {
+     "type": "string",
+     "description": "Optional mask matching the source dimensions: white selects the region to edit, black preserves it. Leave part of the image unselected.",
+     "format": "uri"
+    },
+    "reference_images": {
+     "type": "array",
+     "default": [],
+     "maxItems": 4,
+     "description": "Up to four reference images without a mask, or three when mask_url is supplied. The source image is passed separately as image_url.",
+     "items": {
+      "type": "string",
+      "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+      "format": "uri"
+     }
+    }
+   }
+  },
+  {
+   "id": "krea/krea-2/large",
+   "kind": "image",
+   "path": "/generate/image/krea/krea-2/large",
+   "name": "Krea 2 Large",
+   "description": "Best for expressive photorealism.",
+   "deprecated": false,
+   "required": [
+    "aspect_ratio",
+    "prompt",
+    "resolution"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "seed": {
+     "nullable": true,
+     "type": "number"
+    },
+    "styles": {
+     "type": "array",
+     "description": "Styles (typically LoRAs) to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "id": {
+        "type": "string"
+       },
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       }
+      },
+      "required": [
+       "id",
+       "strength"
+      ]
+     }
+    },
+    "image_style_references": {
+     "type": "array",
+     "maxItems": 10,
+     "description": "Image style references. (0 = no style influence, 1 = maximum). Default 0.5.",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "default": 0.5,
+        "minimum": 0,
+        "maximum": 1
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "url"
+      ]
+     }
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "1:1",
+      "4:3",
+      "3:2",
+      "16:9",
+      "2.35:1",
+      "4:5",
+      "3:4",
+      "2:3",
+      "9:16"
+     ],
+     "description": "Aspect ratio. One of: 1:1, 4:3, 3:2, 16:9, 2.35:1, 4:5, 3:4, 2:3, 9:16."
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "1K"
+     ],
+     "description": "Resolution scale. One of: 1K."
+    },
+    "creativity": {
+     "type": "string",
+     "enum": [
+      "raw",
+      "low",
+      "medium",
+      "high"
+     ],
+     "default": "low",
+     "description": "Prompt expansion mode. `raw` disables prompt expansion; `low`, `medium`, and `high` control expansion strength. This does not affect the K2 Intensity, Complexity, or Movement slider LoRAs."
+    },
+    "intensity": {
+     "type": "integer",
+     "default": 0,
+     "minimum": -100,
+     "maximum": 100,
+     "description": "K2 Intensity slider value from -100 to 100. Use 0 for neutral/no slider LoRA."
+    },
+    "complexity": {
+     "type": "integer",
+     "default": 0,
+     "minimum": -100,
+     "maximum": 100,
+     "description": "K2 Complexity slider value from -100 to 100. Use 0 for neutral/no slider LoRA."
+    },
+    "movement": {
+     "type": "integer",
+     "default": 0,
+     "minimum": -100,
+     "maximum": 100,
+     "description": "K2 Movement slider value from -100 to 100. Use 0 for neutral/no slider LoRA."
+    },
+    "moodboards": {
+     "type": "array",
+     "maxItems": 1,
+     "description": "Moodboards to use for generation. Currently limited to one moodboard.",
+     "items": {
+      "type": "object",
+      "properties": {
+       "id": {
+        "type": "string",
+        "format": "uuid"
+       },
+       "strength": {
+        "type": "number",
+        "default": 0.23,
+        "minimum": 0,
+        "maximum": 1
+       }
+      },
+      "required": [
+       "id"
+      ]
+     }
+    },
+    "image_url": {
+     "nullable": true,
+     "type": "string",
+     "description": "Optional source image for image-to-image generation. When provided, generation starts from this image instead of pure noise. Control how much it changes with `strength`."
+    },
+    "strength": {
+     "type": "number",
+     "default": 0.99,
+     "minimum": 0,
+     "maximum": 1,
+     "description": "Denoising strength when `image_url` is provided. 0 keeps the input image, 1 fully replaces it (the input image is ignored). Has no effect without `image_url`. Default 0.99."
+    }
+   }
+  },
+  {
+   "id": "krea/krea-2/medium",
+   "kind": "image",
+   "path": "/generate/image/krea/krea-2/medium",
+   "name": "Krea 2 Medium",
+   "description": "Best for expressive illustrations.",
+   "deprecated": false,
+   "required": [
+    "aspect_ratio",
+    "prompt",
+    "resolution"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "seed": {
+     "nullable": true,
+     "type": "number"
+    },
+    "styles": {
+     "type": "array",
+     "description": "Styles (typically LoRAs) to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "id": {
+        "type": "string"
+       },
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       }
+      },
+      "required": [
+       "id",
+       "strength"
+      ]
+     }
+    },
+    "image_style_references": {
+     "type": "array",
+     "maxItems": 10,
+     "description": "Image style references. (0 = no style influence, 1 = maximum). Default 0.5.",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "default": 0.5,
+        "minimum": 0,
+        "maximum": 1
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "url"
+      ]
+     }
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "1:1",
+      "4:3",
+      "3:2",
+      "16:9",
+      "2.35:1",
+      "4:5",
+      "3:4",
+      "2:3",
+      "9:16"
+     ],
+     "description": "Aspect ratio. One of: 1:1, 4:3, 3:2, 16:9, 2.35:1, 4:5, 3:4, 2:3, 9:16."
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "1K"
+     ],
+     "description": "Resolution scale. One of: 1K."
+    },
+    "creativity": {
+     "type": "string",
+     "enum": [
+      "raw",
+      "low",
+      "medium",
+      "high"
+     ],
+     "default": "low",
+     "description": "Prompt expansion mode. `raw` disables prompt expansion; `low`, `medium`, and `high` control expansion strength. This does not affect the K2 Intensity, Complexity, or Movement slider LoRAs."
+    },
+    "intensity": {
+     "type": "integer",
+     "default": 0,
+     "minimum": -100,
+     "maximum": 100,
+     "description": "K2 Intensity slider value from -100 to 100. Use 0 for neutral/no slider LoRA."
+    },
+    "complexity": {
+     "type": "integer",
+     "default": 0,
+     "minimum": -100,
+     "maximum": 100,
+     "description": "K2 Complexity slider value from -100 to 100. Use 0 for neutral/no slider LoRA."
+    },
+    "movement": {
+     "type": "integer",
+     "default": 0,
+     "minimum": -100,
+     "maximum": 100,
+     "description": "K2 Movement slider value from -100 to 100. Use 0 for neutral/no slider LoRA."
+    },
+    "moodboards": {
+     "type": "array",
+     "maxItems": 1,
+     "description": "Moodboards to use for generation. Currently limited to one moodboard.",
+     "items": {
+      "type": "object",
+      "properties": {
+       "id": {
+        "type": "string",
+        "format": "uuid"
+       },
+       "strength": {
+        "type": "number",
+        "default": 0.23,
+        "minimum": 0,
+        "maximum": 1
+       }
+      },
+      "required": [
+       "id"
+      ]
+     }
+    },
+    "image_url": {
+     "nullable": true,
+     "type": "string",
+     "description": "Optional source image for image-to-image generation. When provided, generation starts from this image instead of pure noise. Control how much it changes with `strength`."
+    },
+    "strength": {
+     "type": "number",
+     "default": 0.99,
+     "minimum": 0,
+     "maximum": 1,
+     "description": "Denoising strength when `image_url` is provided. 0 keeps the input image, 1 fully replaces it (the input image is ignored). Has no effect without `image_url`. Default 0.99."
+    }
+   }
+  },
+  {
+   "id": "krea/krea-2/medium-turbo",
+   "kind": "image",
+   "path": "/generate/image/krea/krea-2/medium-turbo",
+   "name": "Krea 2 Turbo",
+   "description": "Fastest medium quality Krea 2 model.",
+   "deprecated": false,
+   "required": [
+    "aspect_ratio",
+    "prompt",
+    "resolution"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "seed": {
+     "nullable": true,
+     "type": "number"
+    },
+    "styles": {
+     "type": "array",
+     "description": "Styles (typically LoRAs) to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "id": {
+        "type": "string"
+       },
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       }
+      },
+      "required": [
+       "id",
+       "strength"
+      ]
+     }
+    },
+    "image_style_references": {
+     "type": "array",
+     "maxItems": 10,
+     "description": "Image style references. (0 = no style influence, 1 = maximum). Default 0.5.",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "default": 0.5,
+        "minimum": 0,
+        "maximum": 1
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "url"
+      ]
+     }
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "1:1",
+      "4:3",
+      "3:2",
+      "16:9",
+      "2.35:1",
+      "4:5",
+      "3:4",
+      "2:3",
+      "9:16"
+     ],
+     "description": "Aspect ratio. One of: 1:1, 4:3, 3:2, 16:9, 2.35:1, 4:5, 3:4, 2:3, 9:16."
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "1K"
+     ],
+     "description": "Resolution scale. One of: 1K."
+    },
+    "creativity": {
+     "type": "string",
+     "enum": [
+      "raw",
+      "low",
+      "medium",
+      "high"
+     ],
+     "default": "low",
+     "description": "Prompt expansion mode. `raw` disables prompt expansion; `low`, `medium`, and `high` control expansion strength. This does not affect the K2 Intensity, Complexity, or Movement slider LoRAs."
+    },
+    "intensity": {
+     "type": "integer",
+     "default": 0,
+     "minimum": -100,
+     "maximum": 100,
+     "description": "K2 Intensity slider value from -100 to 100. Use 0 for neutral/no slider LoRA."
+    },
+    "complexity": {
+     "type": "integer",
+     "default": 0,
+     "minimum": -100,
+     "maximum": 100,
+     "description": "K2 Complexity slider value from -100 to 100. Use 0 for neutral/no slider LoRA."
+    },
+    "movement": {
+     "type": "integer",
+     "default": 0,
+     "minimum": -100,
+     "maximum": 100,
+     "description": "K2 Movement slider value from -100 to 100. Use 0 for neutral/no slider LoRA."
+    },
+    "moodboards": {
+     "type": "array",
+     "maxItems": 1,
+     "description": "Moodboards to use for generation. Currently limited to one moodboard.",
+     "items": {
+      "type": "object",
+      "properties": {
+       "id": {
+        "type": "string",
+        "format": "uuid"
+       },
+       "strength": {
+        "type": "number",
+        "default": 0.23,
+        "minimum": 0,
+        "maximum": 1
+       }
+      },
+      "required": [
+       "id"
+      ]
+     }
+    },
+    "image_url": {
+     "nullable": true,
+     "type": "string",
+     "description": "Optional source image for image-to-image generation. When provided, generation starts from this image instead of pure noise. Control how much it changes with `strength`."
+    },
+    "strength": {
+     "type": "number",
+     "default": 0.99,
+     "minimum": 0,
+     "maximum": 1,
+     "description": "Denoising strength when `image_url` is provided. 0 keeps the input image, 1 fully replaces it (the input image is ignored). Has no effect without `image_url`. Default 0.99."
+    }
+   }
+  },
+  {
+   "id": "krea/krea-3",
+   "kind": "image",
+   "path": "/generate/image/krea/krea-3",
+   "name": "Krea 3",
+   "description": "Generate and edit images with Krea 3.",
+   "deprecated": false,
+   "required": [],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "thinking_mode": {
+     "type": "string",
+     "enum": [
+      "fast",
+      "high"
+     ]
+    },
+    "image_urls": {
+     "type": "array",
+     "maxItems": 8,
+     "description": "Reference image URLs to use for the generation",
+     "items": {
+      "type": "string",
+      "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+      "format": "uri"
+     }
+    },
+    "regions": {
+     "type": "array",
+     "maxItems": 24,
+     "description": "Regions to edit, marked as boxes on the image_urls references. Boxes on the first image mark where edits happen; boxes on the other images mark source objects to draw from. Refer to a region as @label (or @1, @2, \u2026 by position) in the prompt or in another region note.",
+     "items": {
+      "type": "object",
+      "properties": {
+       "label": {
+        "type": "string",
+        "description": "Name used to refer to the region as @label in the prompt and region notes. It replaces the region's number: without a label, refer to the region by its 1-based position (@1, @2, \u2026)."
+       },
+       "x": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "description": "Left edge of the box, normalized to [0, 1]."
+       },
+       "y": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "description": "Top edge of the box, normalized to [0, 1]."
+       },
+       "width": {
+        "type": "number",
+        "maximum": 1,
+        "description": "Box width, normalized to [0, 1]."
+       },
+       "height": {
+        "type": "number",
+        "maximum": 1,
+        "description": "Box height, normalized to [0, 1]."
+       },
+       "note": {
+        "type": "string",
+        "default": "",
+        "description": "What to do with this region. Takes precedence over the prompt for its box."
+       },
+       "image_idx": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991,
+        "description": "0-based index of the image_urls entry this box is marked on."
+       }
+      },
+      "required": [
+       "height",
+       "image_idx",
+       "width",
+       "x",
+       "y"
+      ]
+     }
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "1K",
+      "2K",
+      "4K"
+     ]
+    },
+    "width": {
+     "type": "integer",
+     "maximum": 4096
+    },
+    "height": {
+     "type": "integer",
+     "maximum": 4096
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "1:1",
+      "4:5",
+      "3:4",
+      "2:3",
+      "9:16",
+      "5:4",
+      "4:3",
+      "3:2",
+      "16:9",
+      "21:9"
+     ]
+    },
+    "seed": {
+     "type": "number"
+    },
+    "regional_edit": {
+     "type": "boolean"
+    }
+   }
+  },
+  {
+   "id": "luma/uni-1",
+   "kind": "image",
+   "path": "/generate/image/luma/uni-1",
+   "name": "Luma UNI-1",
+   "description": "Reasoning image model for prompt-faithful text to image.",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "width": {
+     "type": "number",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 8192
+    },
+    "height": {
+     "type": "number",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 8192
+    },
+    "mode": {
+     "type": "string",
+     "enum": [
+      "standard",
+      "max"
+     ],
+     "default": "standard"
+    },
+    "style": {
+     "type": "string",
+     "enum": [
+      "auto",
+      "manga"
+     ],
+     "default": "auto"
+    },
+    "output_format": {
+     "nullable": true,
+     "type": "string",
+     "enum": [
+      "png",
+      "jpeg"
+     ]
+    },
+    "web_search": {
+     "type": "boolean",
+     "default": false
+    },
+    "style_images": {
+     "type": "array",
+     "maxItems": 9,
+     "description": "Image prompts to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "strength"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": "meta/muse-image",
+   "kind": "image",
+   "path": "/generate/image/meta/muse-image",
+   "name": "Muse Image",
+   "description": "Meta\u2019s agentic image model \u2014 it reasons about the prompt, pulls references from the web, and verifies the render before returning it.",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "21:9",
+      "16:9",
+      "4:3",
+      "3:2",
+      "1:1",
+      "2:3",
+      "3:4",
+      "9:16",
+      "9:21"
+     ]
+    },
+    "style_images": {
+     "type": "array",
+     "maxItems": 10,
+     "description": "Image prompts to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "strength"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": "openai/gpt-image-2",
+   "kind": "image",
+   "path": "/generate/image/openai/gpt-image-2",
+   "name": "ChatGPT 2",
+   "description": "Smart powerful model for editing.",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "quality": {
+     "type": "string",
+     "enum": [
+      "low",
+      "medium",
+      "high",
+      "auto"
+     ],
+     "default": "high"
+    },
+    "image_urls": {
+     "type": "array",
+     "maxItems": 10,
+     "description": "Image prompts to use for the generation.",
+     "items": {
+      "type": "string",
+      "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+      "format": "uri"
+     }
+    },
+    "width": {
+     "type": "number",
+     "description": "Width of the generated image in pixels."
+    },
+    "height": {
+     "type": "number",
+     "description": "Height of the generated image in pixels."
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "16:9",
+      "2:1",
+      "3:2",
+      "4:3",
+      "1:1",
+      "3:4",
+      "2:3",
+      "1:2",
+      "9:16"
+     ],
+     "description": "Aspect ratio. One of: 16:9, 2:1, 3:2, 4:3, 1:1, 3:4, 2:3, 1:2, 9:16."
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "1K",
+      "2K",
+      "4K"
+     ],
+     "description": "Resolution scale. One of: 1K, 2K, 4K."
+    }
+   }
+  },
+  {
+   "id": "openai/gpt-image-2.5-flare",
+   "kind": "image",
+   "path": "/generate/image/openai/gpt-image-2.5-flare",
+   "name": "GPT Image 2.5 Flare",
+   "description": "GPT Image 2.5 with transparent background support.",
+   "deprecated": false,
+   "required": [
+    "aspect_ratio",
+    "prompt",
+    "resolution"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "quality": {
+     "type": "string",
+     "enum": [
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max"
+     ],
+     "default": "high"
+    },
+    "image_urls": {
+     "type": "array",
+     "maxItems": 10,
+     "description": "Image prompts to use for the generation.",
+     "items": {
+      "type": "string",
+      "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+      "format": "uri"
+     }
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "16:9",
+      "2:1",
+      "3:2",
+      "4:3",
+      "1:1",
+      "3:4",
+      "2:3",
+      "1:2",
+      "9:16"
+     ],
+     "description": "Aspect ratio. One of: 16:9, 2:1, 3:2, 4:3, 1:1, 3:4, 2:3, 1:2, 9:16."
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "1K",
+      "2K",
+      "4K"
+     ],
+     "description": "Resolution scale. One of: 1K, 2K, 4K."
+    },
+    "background": {
+     "type": "string",
+     "enum": [
+      "transparent",
+      "opaque",
+      "auto"
+     ],
+     "description": "Background of the generated image. `transparent` returns a cutout."
+    }
+   }
+  },
+  {
+   "id": "openai/gpt-image-2.5-sunburst",
+   "kind": "image",
+   "path": "/generate/image/openai/gpt-image-2.5-sunburst",
+   "name": "GPT Image 2.5 Sunburst",
+   "description": "GPT Image 2.5, optimized for speed.",
+   "deprecated": false,
+   "required": [
+    "aspect_ratio",
+    "prompt",
+    "resolution"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "quality": {
+     "type": "string",
+     "enum": [
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max"
+     ],
+     "default": "high"
+    },
+    "image_urls": {
+     "type": "array",
+     "maxItems": 10,
+     "description": "Image prompts to use for the generation.",
+     "items": {
+      "type": "string",
+      "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+      "format": "uri"
+     }
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "16:9",
+      "2:1",
+      "3:2",
+      "4:3",
+      "1:1",
+      "3:4",
+      "2:3",
+      "1:2",
+      "9:16"
+     ],
+     "description": "Aspect ratio. One of: 16:9, 2:1, 3:2, 4:3, 1:1, 3:4, 2:3, 1:2, 9:16."
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "1K",
+      "2K",
+      "4K"
+     ],
+     "description": "Resolution scale. One of: 1K, 2K, 4K."
+    }
+   }
+  },
+  {
+   "id": "qwen/2512",
+   "kind": "image",
+   "path": "/generate/image/qwen/2512",
+   "name": "Qwen Image 2512",
+   "description": "Affordable medium quality model.",
+   "deprecated": false,
+   "required": [
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "negative_prompt": {
+     "type": "string",
+     "default": ""
+    },
+    "width": {
+     "type": "number",
+     "default": 1024,
+     "minimum": 256,
+     "maximum": 4096
+    },
+    "height": {
+     "type": "number",
+     "default": 1024,
+     "minimum": 256,
+     "maximum": 4096
+    },
+    "num_inference_steps": {
+     "type": "integer",
+     "default": 28,
+     "minimum": 1,
+     "maximum": 50
+    },
+    "cfg_scale": {
+     "type": "number",
+     "default": 4
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "styles": {
+     "type": "array",
+     "maxItems": 3,
+     "items": {
+      "type": "object",
+      "properties": {
+       "id": {
+        "type": "string"
+       },
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       }
+      },
+      "required": [
+       "id",
+       "strength"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": "recraft/recraft-v4.1-flash",
+   "kind": "image",
+   "path": "/generate/image/recraft/recraft-v4.1-flash",
+   "name": "Recraft V4.1 Flash",
+   "description": "Recraft\u2019s fast tier for raster art, illustration, and photography.",
+   "deprecated": false,
+   "required": [
+    "aspect_ratio",
+    "prompt",
+    "resolution"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "1:1",
+      "4:3",
+      "3:2",
+      "16:9",
+      "3:4",
+      "2:3",
+      "9:16"
+     ],
+     "description": "Aspect ratio. One of: 1:1, 4:3, 3:2, 16:9, 3:4, 2:3, 9:16."
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "1K"
+     ],
+     "description": "Resolution scale. One of: 1K."
+    }
+   }
+  },
+  {
+   "id": "runway/gen-4-image",
+   "kind": "image",
+   "path": "/generate/image/runway/gen-4-image",
+   "name": "Runway Gen-4 Image",
+   "description": "Cinematic image model with references.",
+   "deprecated": false,
+   "required": [
+    "prompt",
+    "reference_images"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "width": {
+     "type": "number",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 8192
+    },
+    "height": {
+     "type": "number",
+     "default": 1024,
+     "minimum": 512,
+     "maximum": 8192
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "reference_images": {
+     "type": "array",
+     "minItems": 1,
+     "maxItems": 3,
+     "items": {
+      "type": "object",
+      "properties": {
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       },
+       "tag": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "tag",
+       "url"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": "xai/grok-imagine-2",
+   "kind": "image",
+   "path": "/generate/image/xai/grok-imagine-2",
+   "name": "Grok Imagine 2.0",
+   "description": "xAI's image model with selectable quality and 2K output.",
+   "deprecated": false,
+   "required": [
+    "aspect_ratio",
+    "prompt",
+    "resolution"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "quality": {
+     "type": "string",
+     "enum": [
+      "low",
+      "medium"
+     ],
+     "default": "medium"
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "2:1",
+      "20:9",
+      "19.5:9",
+      "16:9",
+      "3:2",
+      "4:3",
+      "1:1",
+      "3:4",
+      "2:3",
+      "9:16",
+      "9:19.5",
+      "9:20",
+      "1:2"
+     ],
+     "description": "Aspect ratio. One of: 2:1, 20:9, 19.5:9, 16:9, 3:2, 4:3, 1:1, 3:4, 2:3, 9:16, 9:19.5, 9:20, 1:2."
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "1K",
+      "2K"
+     ],
+     "description": "Resolution scale. One of: 1K, 2K."
+    },
+    "style_images": {
+     "type": "array",
+     "maxItems": 3,
+     "description": "Image prompts to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "strength"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "id": "xai/grok-imagine-2-edit",
+   "kind": "image",
+   "path": "/generate/image/xai/grok-imagine-2-edit",
+   "name": "Grok Imagine 2.0",
+   "description": "xAI's image editing model with natural language edit instructions",
+   "deprecated": false,
+   "required": [
+    "image_urls",
+    "prompt"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "quality": {
+     "type": "string",
+     "enum": [
+      "low",
+      "medium"
+     ],
+     "default": "medium"
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "1K",
+      "2K"
+     ],
+     "default": "1K"
+    },
+    "image_urls": {
+     "type": "array",
+     "minItems": 1,
+     "maxItems": 3,
+     "items": {
+      "type": "string",
+      "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+      "format": "uri"
+     }
+    }
+   }
+  },
+  {
+   "id": "z-image/z-image",
+   "kind": "image",
+   "path": "/generate/image/z-image/z-image",
+   "name": "Z Image",
+   "description": "Fastest model. Realistic, low diversity.",
+   "deprecated": false,
+   "required": [
+    "aspect_ratio",
+    "prompt",
+    "resolution"
+   ],
+   "fields": {
+    "prompt": {
+     "type": "string"
+    },
+    "seed": {
+     "type": "number",
+     "default": 1337
+    },
+    "denoising_strength": {
+     "type": "number",
+     "default": 0.6,
+     "minimum": 0,
+     "maximum": 1
+    },
+    "styles": {
+     "type": "array",
+     "maxItems": 3,
+     "items": {
+      "type": "object",
+      "properties": {
+       "id": {
+        "type": "string"
+       },
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       }
+      },
+      "required": [
+       "id",
+       "strength"
+      ]
+     }
+    },
+    "skip_prompt_expansion": {
+     "type": "boolean",
+     "default": false
+    },
+    "aspect_ratio": {
+     "type": "string",
+     "enum": [
+      "1:1",
+      "4:3",
+      "2:3",
+      "16:9",
+      "9:16"
+     ],
+     "description": "Aspect ratio. One of: 1:1, 4:3, 2:3, 16:9, 9:16."
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "1K"
+     ],
+     "description": "Resolution scale. One of: 1K."
+    },
+    "image_url": {
+     "nullable": true,
+     "type": "string"
+    },
+    "style_images": {
+     "type": "array",
+     "maxItems": 1,
+     "description": "Image prompts to use for the generation",
+     "items": {
+      "type": "object",
+      "properties": {
+       "strength": {
+        "type": "number",
+        "minimum": -2,
+        "maximum": 2
+       },
+       "url": {
+        "type": "string",
+        "description": "Can be an external URL, base64 data URI, or uploaded asset URL.",
+        "format": "uri"
+       }
+      },
+      "required": [
+       "strength"
+      ]
+     }
+    }
+   }
+  }
+ ]
+}
